@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotería Costa Rica</title>
+</head>
+<body>
+    <h1>Lotería Costa Rica</h1>
+    <button id="jugar">Jugar</button>
+    <p>Total gastado: ₡<span id="totalGastado">0</span></p>
+    <p>Total ganado: ₡<span id="totalGanado">0</span></p>
+    <h2>Detalle de premios ganados:</h2>
+    <ul id="detallePremios"></ul>
+
+    <script>
+        // Función para generar un número aleatorio entre min (incluido) y max (excluido)
+        function generarNumeroAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function terminanIguales(numero1, numero2) {
+            // Convertir ambos números a cadenas
+            var cadenaNumero1 = numero1.toString();
+            var cadenaNumero2 = numero2.toString();
+          
+            // Obtener los últimos dígitos de cada cadena
+            var ultimosDigitosNumero1 = cadenaNumero1.slice(-1);
+            var ultimosDigitosNumero2 = cadenaNumero2.slice(-1);
+          
+            // Comparar los últimos dígitos y devolver true si son iguales
+            return ultimosDigitosNumero1 === ultimosDigitosNumero2;
+          }
+
+        document.getElementById("jugar").addEventListener("click", function () {
+            let totalGastado = 0;
+            let totalGanado = 0;
+            const cantidadFracciones = 1;
+            const detallePremiosList = document.getElementById("detallePremios");
+            detallePremiosList.innerHTML = ''; // Limpiar el detalle de premios previos
+
+            // Realizar 2600 sorteos
+            for (let j = 0; j < 2600; j++) {
+                const serieComprada = generarNumeroAleatorio(0, 1000);
+                const numeroComprado = 21;
+                totalGastado += 1500 * cantidadFracciones; // Costo de 10 fracciones
+
+                // Generar números y series aleatorias para los premios
+                const numeroPremioMayor = generarNumeroAleatorio(0, 100);
+                const seriePremioMayor = generarNumeroAleatorio(0, 1000);
+                const numeroSegundoPremio = generarNumeroAleatorio(0, 100);
+                const serieSegundoPremio = generarNumeroAleatorio(0, 1000);
+                const numeroTercerPremio = generarNumeroAleatorio(0, 100);
+                const serieTercerPremio = generarNumeroAleatorio(0, 1000);
+
+                const cantidadPremios1 = 3; 
+                const numerosPremios1 = [];
+                const seriesPremios1 = [];
+                for (let i = 0; i < cantidadPremios1; i++) {
+                    const numero = generarNumeroAleatorio(0, 100);
+                    const serie = generarNumeroAleatorio(0, 1000);
+                    numerosPremios1.push(numero);
+                    seriesPremios1.push(serie);
+                }
+
+                const cantidadPremios2 = 6; 
+                const numerosPremios2 = [];
+                const seriesPremios2 = [];
+                for (let i = 0; i < cantidadPremios2; i++) {
+                    const numero = generarNumeroAleatorio(0, 100);
+                    const serie = generarNumeroAleatorio(0, 1000);
+                    numerosPremios2.push(numero);
+                    seriesPremios2.push(serie);
+                }
+
+                const cantidadPremios3 = 28; 
+                const numerosPremios3 = [];
+                const seriesPremios3 = [];
+                for (let i = 0; i < cantidadPremios3; i++) {
+                    const numero = generarNumeroAleatorio(0, 100);
+                    const serie = generarNumeroAleatorio(0, 1000);
+                    numerosPremios3.push(numero);
+                    seriesPremios3.push(serie);
+                }
+
+                const cantidadPremios4 = 60; 
+                const numerosPremios4 = [];
+                const seriesPremios4 = [];
+                for (let i = 0; i < cantidadPremios4; i++) {
+                    const numero = generarNumeroAleatorio(0, 100);
+                    const serie = generarNumeroAleatorio(0, 1000);
+                    numerosPremios4.push(numero);
+                    seriesPremios4.push(serie);
+                }
+
+                // Simular el sorteo
+                let premioGanado = 0;
+                let detallePremio = '';
+
+                if (numeroComprado === numeroPremioMayor && serieComprada === seriePremioMayor) {
+                    premioGanado = 30000000 * cantidadFracciones; // Premio Mayor
+                    detallePremio = `Premio Mayor: ₡${premioGanado}`;
+                } else if (numeroComprado === numeroPremioMayor) {
+                    premioGanado = 18000 * cantidadFracciones; // Premio por Número igual al Mayor
+                    detallePremio = `Premio por Número igual al Mayor: ₡${premioGanado}`;
+                } else if (serieComprada === seriePremioMayor) {
+                    premioGanado = 22000 * cantidadFracciones; // Serie igual al Mayor, con diferente número
+                    detallePremio = `Serie igual al Mayor, con diferente número: ₡${premioGanado}`;
+                } else if(terminanIguales(numeroComprado, numeroPremioMayor)) {
+                    premioGanado = 3000 * cantidadFracciones; // Ultima cifra del Mayor (Terminación)
+                    detallePremio = `Ultima cifra del Mayor (Terminación): ₡${premioGanado}`;
+                }
+                if (numeroComprado === (numeroPremioMayor-1) && serieComprada === seriePremioMayor) {
+                    premioGanado = 300000 * cantidadFracciones; // Serie del Mayor con el número anterior (Aproximación)
+                    detallePremio = `Serie del Mayor con el número anterior (Aproximación): ₡${premioGanado}`;
+                }else if (numeroComprado === (numeroPremioMayor+1) && serieComprada === seriePremioMayor) {
+                    premioGanado = 300000 * cantidadFracciones; // Serie del Mayor con el número posterior (Aproximación)
+                    detallePremio = `Serie del Mayor con el número posterior (Aproximación): ₡${premioGanado}`;
+                } 
+                
+                if (numeroComprado === numeroSegundoPremio && serieComprada === serieSegundoPremio) {
+                    premioGanado = 4400000 * cantidadFracciones; // Segundo Premio
+                    detallePremio = `Segundo Premio: ₡${premioGanado}`;
+                } else if (numeroComprado === numeroSegundoPremio) {
+                    premioGanado = 3000 * cantidadFracciones; // Premio por Número igual al Segundo
+                    detallePremio = `Premio por Número igual al Segundo: ₡${premioGanado}`;
+                } 
+                
+                if (numeroComprado === numeroTercerPremio && serieComprada === serieTercerPremio) {
+                    premioGanado = 2000000 * cantidadFracciones; // Tercer Premio
+                    detallePremio = `Tercer Premio: ₡${premioGanado}`;
+                } else if (numeroComprado === numeroTercerPremio) {
+                    premioGanado = 1500 * cantidadFracciones; // Premio por Número igual al Tercero
+                    detallePremio = `Premio por Número igual al Tercero: ₡${premioGanado}`;
+                }
+
+                for (let i = 0; i < cantidadPremios1; i++) {
+                    if (numeroComprado === numerosPremios1[i] && serieComprada === seriesPremios1[i]) {
+                        premioGanado = 80000 * cantidadFracciones; // Premio de 80000 por fraccion
+                        detallePremio = `Premio de 80000 por fraccion: ₡${premioGanado}`;
+                    }
+                }
+
+                for (let i = 0; i < cantidadPremios2; i++) {
+                    if (numeroComprado === numerosPremios2[i] && serieComprada === seriesPremios2[i]) {
+                        premioGanado = 80000 * cantidadFracciones; // Premio de 40000 por fraccion
+                        detallePremio = `Premio de 40000 por fraccion: ₡${premioGanado}`;
+                    }
+                }
+
+                for (let i = 0; i < cantidadPremios3; i++) {
+                    if (numeroComprado === numerosPremios3[i] && serieComprada === seriesPremios3[i]) {
+                        premioGanado = 80000 * cantidadFracciones; // Premio de 12000 por fraccion
+                        detallePremio = `Premio de 12000 por fraccion: ₡${premioGanado}`;
+                    }
+                }
+
+                for (let i = 0; i < cantidadPremios4; i++) {
+                    if (numeroComprado === numerosPremios4[i] && serieComprada === seriesPremios4[i]) {
+                        premioGanado = 80000 * cantidadFracciones; // Premio de 10000 por fraccion
+                        detallePremio = `Premio de 10000 por fraccion: ₡${premioGanado}`;
+                    }
+                }
+
+                totalGanado += premioGanado;
+
+                // Agregar el detalle del premio ganado a la lista
+                const li = document.createElement('li');
+                li.textContent = detallePremio;
+                detallePremiosList.appendChild(li);
+            }
+
+            // Actualizar los totales en la página
+            document.getElementById("totalGastado").textContent = totalGastado;
+            document.getElementById("totalGanado").textContent = totalGanado;
+        });
+    </script>
+</body>
+</html>

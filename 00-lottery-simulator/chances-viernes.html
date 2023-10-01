@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chances Viernes Costa Rica</title>
+</head>
+<body>
+    <h1>Chances Viernes Costa Rica</h1>
+    <button id="jugar">Jugar</button>
+    <p>Total gastado: ₡<span id="totalGastado">0</span></p>
+    <p>Total ganado: ₡<span id="totalGanado">0</span></p>
+    <h2>Detalle de premios ganados:</h2>
+    <ul id="detallePremios"></ul>
+
+    <script>
+        // Función para generar un número aleatorio entre min (incluido) y max (excluido)
+        function generarNumeroAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function calcularInverso(numero) {
+            if (numero < 0) {
+              return -calcularInverso(-numero);
+            }
+          
+            var numeroComoCadena = numero.toString();
+            var inversoComoCadena = numeroComoCadena
+              .split('')
+              .reverse()
+              .join('');
+          
+            var inverso = parseInt(inversoComoCadena, 10);
+            return inverso;
+        }
+
+        document.getElementById("jugar").addEventListener("click", function () {
+            let totalGastado = 0;
+            let totalGanado = 0;
+            const cantidadFracciones = 1;
+            const detallePremiosList = document.getElementById("detallePremios");
+            detallePremiosList.innerHTML = ''; // Limpiar el detalle de premios previos
+
+            // Realizar 2600 sorteos
+            for (let i = 0; i < 2600; i++) {
+                const serieComprada = generarNumeroAleatorio(0, 1000);
+                const numeroComprado = 21;
+                totalGastado += 1200 * cantidadFracciones; // Costo de una fracción
+
+                // Generar números y series aleatorias para los premios
+                const numeroPremioMayor = generarNumeroAleatorio(0, 100);
+                const seriePremioMayor = generarNumeroAleatorio(0, 1000);
+                const numeroSegundoPremio = generarNumeroAleatorio(0, 100);
+                const serieSegundoPremio = generarNumeroAleatorio(0, 1000);
+                const numeroTercerPremio = generarNumeroAleatorio(0, 100);
+                const serieTercerPremio = generarNumeroAleatorio(0, 1000);
+
+                // Simular el sorteo
+                let premioGanado = 0;
+                let detallePremio = '';
+
+                if (numeroComprado === numeroPremioMayor && serieComprada === seriePremioMayor) {
+                    premioGanado = 20000000 * cantidadFracciones; // Premio Mayor
+                    detallePremio = `Premio Mayor: ₡${premioGanado}`;
+                } else if (numeroComprado === numeroPremioMayor) {
+                    premioGanado = 30000 * cantidadFracciones; // Premio por Número igual al Mayor
+                    detallePremio = `Premio por Número igual al Mayor: ₡${premioGanado}`;
+                } else if (numeroComprado === calcularInverso(numeroPremioMayor)) {
+                    premioGanado = 3000 * cantidadFracciones; // Inversa de Mayor
+                    detallePremio = `Inversa de Mayor: ₡${premioGanado}`;
+                } 
+                
+                if (numeroComprado === numeroSegundoPremio && serieComprada === serieSegundoPremio) {
+                    premioGanado = 6000000 * cantidadFracciones; // Segundo Premio
+                    detallePremio = `Segundo Premio: ₡${premioGanado}`;
+                } else if (numeroComprado === numeroSegundoPremio) {
+                    premioGanado = 7200 * cantidadFracciones; // Premio por Número igual al Segundo
+                    detallePremio = `Premio por Número igual al Segundo: ₡${premioGanado}`;
+                } else if (numeroComprado === calcularInverso(numeroSegundoPremio)) {
+                    premioGanado = 2000 * cantidadFracciones; // Inversa de Segundo
+                    detallePremio = `Inversa de Segundo: ₡${premioGanado}`;
+                } 
+                
+                if (numeroComprado === numeroTercerPremio && serieComprada === serieTercerPremio) {
+                    premioGanado = 1600000 * cantidadFracciones; // Tercer Premio
+                    detallePremio = `Tercer Premio: ₡${premioGanado}`;
+                } else if (numeroComprado === numeroTercerPremio) {
+                    premioGanado = 4800 * cantidadFracciones; // Premio por Número igual al Tercero
+                    detallePremio = `Premio por Número igual al Tercero: ₡${premioGanado}`;
+                } else if (numeroComprado === calcularInverso(numeroTercerPremio)) {
+                    premioGanado = 1200 * cantidadFracciones; // Inversa de Tercero
+                    detallePremio = `Inversa de Tercero: ₡${premioGanado}`;
+                }
+
+                totalGanado += premioGanado;
+
+                // Agregar el detalle del premio ganado a la lista
+                const li = document.createElement('li');
+                li.textContent = detallePremio;
+                detallePremiosList.appendChild(li);
+            }
+
+            // Actualizar los totales en la página
+            document.getElementById("totalGastado").textContent = totalGastado;
+            document.getElementById("totalGanado").textContent = totalGanado;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+
+
+
+Detalles de cada sorteo:
+1 Premio Mayor ₡16.000.000 Por Fracción
+1 Segundo Premio ₡5.000.000 Por Fracción
+1 Tercer Premio ₡1.400.000 Por Fracción
+999 Los billetes con el Número igual al Mayor, con diferente serie ₡26.000 Por Fracción
+999 Los billetes con el Número igual al Segundo, con diferente serie ₡6.000 Por Fracción
+999 Los billetes con el Número igual al Tercero, con diferente serie ₡4.000 Por Fracción
+1000 Inversa de Mayor ₡2.000 Por Fracción
+1000 Inversa de Segundo ₡1.600 Por Fracción
+1000 Inversa de Tercero ₡1.000 Por Fracción
+
+
+
+
+
+1 Premio Mayor ₡20.000.000 Por Fracción
+1 Segundo Premio ₡6.000.000 Por Fracción
+1 Tercer Premio ₡1.600.000 Por Fracción
+999 Los billetes con el Número igual al Mayor, con diferente serie ₡30.000 Por Fracción
+999 Los billetes con el Número igual al Segundo, con diferente serie ₡7.200 Por Fracción
+999 Los billetes con el Número igual al Tercero, con diferente serie ₡4.800 Por Fracción
+1000 Inversa de Mayor ₡3.000 Por Fracción
+1000 Inversa de Segundo ₡2.000 Por Fracción
+1000 Inversa de Tercero ₡1.200 Por Fracción
+
+
+
+
+
+
+
+
+
+
+
+
+/1 Premio Mayor ₡30.000.000 Por Fracción
+/1 Premio de ₡4.400.000 Por Fracción
+/1 Premio de ₡2.000.000 Por Fracción
+
+/999 Los billetes con el Número igual al Mayor, con diferente serie ₡18.000 Por Fracción
+/999 Número igual al Segundo Premio excepto su serie ₡3.000 Por Fracción
+/999 Número igual al Tercer Premio excepto su serie ₡1.500 Por Fracción
+
+/1 Serie del Mayor con el número anterior (Aproximación) ₡300.000 Por Fracción
+/1 Serie del Mayor con el número posterior (Aproximación) ₡300.000 Por Fracción
+/97 Los billetes con la Serie igual al Mayor, con diferente número ₡22.000 Por Fracción
+/9000 Los billetes con la última cifra del Mayor (Terminación) ₡3.000 Por Fracción
+
+3 Premios de ₡400.000 Por Fracción
+6 Premios de ₡200.000 Por Fracción
+28 Premios de ₡60.000 Por Fracción
+60 Premios de ₡50.000 Por Fracción
