@@ -5,7 +5,6 @@
         @content;
     }
 }
-
 @mixin tablet {
     @media (min-width: v.$tablet) {
         @content;
@@ -32,4 +31,17 @@
     margin: 0;
     padding:0;
     list-style: none;
+}
+
+//* EJEMPLO MIXIN
+@mixin heading($color: blue, $border-radius: false) {
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    color: $color;
+    letter-spacing: 1px;
+    background-color: black;
+
+    @if $border-radius {
+        border-radius: 1rem;
+    }
 }

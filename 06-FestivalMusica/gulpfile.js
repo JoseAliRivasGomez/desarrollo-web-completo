@@ -3,10 +3,10 @@ const { src, dest, watch, parallel } = require('gulp');
 //* CSS
 const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const postcss = require('gulp-postcss');
-const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('autoprefixer'); //! No es necesario en desarrollo
+const cssnano = require('cssnano'); //! No es necesario en desarrollo
+const postcss = require('gulp-postcss'); //! No es necesario en desarrollo
+const sourcemaps = require('gulp-sourcemaps'); //! No es necesario en desarrollo
 
 //* Imagenes
 const cache = require('gulp-cache');
@@ -15,7 +15,7 @@ const webp = require('gulp-webp');
 const avif = require('gulp-avif');
 
 //* Javascript
-const terser = require('gulp-terser-js');
+const terser = require('gulp-terser-js'); //! No es necesario en desarrollo
 
 function css( done ) {
     src('src/scss/**/*.scss') //* Identificar el archivo .SCSS a compilar
@@ -86,4 +86,4 @@ exports.js = javascript;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
 exports.versionAvif = versionAvif;
-exports.dev = parallel( imagenes, versionWebp, versionAvif, javascript, dev) ;
+exports.dev = parallel( imagenes, versionWebp, versionAvif, dev) ;

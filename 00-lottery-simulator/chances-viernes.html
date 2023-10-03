@@ -37,15 +37,62 @@
         document.getElementById("jugar").addEventListener("click", function () {
             let totalGastado = 0;
             let totalGanado = 0;
-            const cantidadFracciones = 1;
+            
+            const cantidadNumerosDiferentes = 1;
+            const cantidadFraccionesPorNumero = 10;
+            const cantidadFraccionesTotales = 10;
+
             const detallePremiosList = document.getElementById("detallePremios");
             detallePremiosList.innerHTML = ''; // Limpiar el detalle de premios previos
 
             // Realizar 2600 sorteos
             for (let i = 0; i < 2600; i++) {
-                const serieComprada = generarNumeroAleatorio(0, 1000);
-                const numeroComprado = 21;
-                totalGastado += 1200 * cantidadFracciones; // Costo de una fracción
+
+                const numerosComprados = [];
+                const seriesCompradas = [];
+                for (let i = 0; i < cantidadNumerosDiferentes; i++) {
+                    const numero = generarNumeroAleatorio(0, 100);
+                    /* let numero = 0;
+                    switch(i) {
+                        case 1:
+                            numero = 11;
+                            break;
+                        case 2:
+                            numero = 22;
+                            break;
+                        case 3:
+                            numero = 33;
+                            break;
+                        case 4:
+                            numero = 44;
+                            break;
+                        case 5:
+                            numero = 55;
+                            break;
+                        case 6:
+                            numero = 66;
+                            break;
+                        case 7:
+                            numero = 77;
+                            break;
+                        case 8:
+                            numero = 88;
+                            break;
+                        case 9:
+                            numero = 99;
+                            break;
+                        default:
+                            numero = 0;
+                            break;
+                    } */
+                    const serie = generarNumeroAleatorio(0, 1000);
+                    numerosComprados.push(numero);
+                    seriesCompradas.push(serie);
+                }
+                // const serieComprada = generarNumeroAleatorio(0, 1000);
+                // const numeroComprado = 21;
+
+                totalGastado += 1200 * cantidadFraccionesTotales; // Costo de una fracción
 
                 // Generar números y series aleatorias para los premios
                 const numeroPremioMayor = generarNumeroAleatorio(0, 100);
@@ -59,37 +106,39 @@
                 let premioGanado = 0;
                 let detallePremio = '';
 
-                if (numeroComprado === numeroPremioMayor && serieComprada === seriePremioMayor) {
-                    premioGanado = 20000000 * cantidadFracciones; // Premio Mayor
-                    detallePremio = `Premio Mayor: ₡${premioGanado}`;
-                } else if (numeroComprado === numeroPremioMayor) {
-                    premioGanado = 30000 * cantidadFracciones; // Premio por Número igual al Mayor
-                    detallePremio = `Premio por Número igual al Mayor: ₡${premioGanado}`;
-                } else if (numeroComprado === calcularInverso(numeroPremioMayor)) {
-                    premioGanado = 3000 * cantidadFracciones; // Inversa de Mayor
-                    detallePremio = `Inversa de Mayor: ₡${premioGanado}`;
-                } 
-                
-                if (numeroComprado === numeroSegundoPremio && serieComprada === serieSegundoPremio) {
-                    premioGanado = 6000000 * cantidadFracciones; // Segundo Premio
-                    detallePremio = `Segundo Premio: ₡${premioGanado}`;
-                } else if (numeroComprado === numeroSegundoPremio) {
-                    premioGanado = 7200 * cantidadFracciones; // Premio por Número igual al Segundo
-                    detallePremio = `Premio por Número igual al Segundo: ₡${premioGanado}`;
-                } else if (numeroComprado === calcularInverso(numeroSegundoPremio)) {
-                    premioGanado = 2000 * cantidadFracciones; // Inversa de Segundo
-                    detallePremio = `Inversa de Segundo: ₡${premioGanado}`;
-                } 
-                
-                if (numeroComprado === numeroTercerPremio && serieComprada === serieTercerPremio) {
-                    premioGanado = 1600000 * cantidadFracciones; // Tercer Premio
-                    detallePremio = `Tercer Premio: ₡${premioGanado}`;
-                } else if (numeroComprado === numeroTercerPremio) {
-                    premioGanado = 4800 * cantidadFracciones; // Premio por Número igual al Tercero
-                    detallePremio = `Premio por Número igual al Tercero: ₡${premioGanado}`;
-                } else if (numeroComprado === calcularInverso(numeroTercerPremio)) {
-                    premioGanado = 1200 * cantidadFracciones; // Inversa de Tercero
-                    detallePremio = `Inversa de Tercero: ₡${premioGanado}`;
+                for (let i = 0; i < numerosComprados.length; i++) {
+                    if (numerosComprados[i] === numeroPremioMayor && seriesCompradas[i] === seriePremioMayor) {
+                        premioGanado = 20000000 * cantidadFraccionesPorNumero; // Premio Mayor
+                        detallePremio = `Premio Mayor: ₡${premioGanado}`;
+                    } else if (numerosComprados[i] === numeroPremioMayor) {
+                        premioGanado = 30000 * cantidadFraccionesPorNumero; // Premio por Número igual al Mayor
+                        detallePremio = `Premio por Número igual al Mayor: ₡${premioGanado}`;
+                    } else if (numerosComprados[i] === calcularInverso(numeroPremioMayor)) {
+                        premioGanado = 3000 * cantidadFraccionesPorNumero; // Inversa de Mayor
+                        detallePremio = `Inversa de Mayor: ₡${premioGanado}`;
+                    } 
+                    
+                    if (numerosComprados[i] === numeroSegundoPremio && seriesCompradas[i] === serieSegundoPremio) {
+                        premioGanado = 6000000 * cantidadFraccionesPorNumero; // Segundo Premio
+                        detallePremio = `Segundo Premio: ₡${premioGanado}`;
+                    } else if (numerosComprados[i] === numeroSegundoPremio) {
+                        premioGanado = 7200 * cantidadFraccionesPorNumero; // Premio por Número igual al Segundo
+                        detallePremio = `Premio por Número igual al Segundo: ₡${premioGanado}`;
+                    } else if (numerosComprados[i] === calcularInverso(numeroSegundoPremio)) {
+                        premioGanado = 2000 * cantidadFraccionesPorNumero; // Inversa de Segundo
+                        detallePremio = `Inversa de Segundo: ₡${premioGanado}`;
+                    } 
+                    
+                    if (numerosComprados[i] === numeroTercerPremio && seriesCompradas[i] === serieTercerPremio) {
+                        premioGanado = 1600000 * cantidadFraccionesPorNumero; // Tercer Premio
+                        detallePremio = `Tercer Premio: ₡${premioGanado}`;
+                    } else if (numerosComprados[i] === numeroTercerPremio) {
+                        premioGanado = 4800 * cantidadFraccionesPorNumero; // Premio por Número igual al Tercero
+                        detallePremio = `Premio por Número igual al Tercero: ₡${premioGanado}`;
+                    } else if (numerosComprados[i] === calcularInverso(numeroTercerPremio)) {
+                        premioGanado = 1200 * cantidadFraccionesPorNumero; // Inversa de Tercero
+                        detallePremio = `Inversa de Tercero: ₡${premioGanado}`;
+                    }
                 }
 
                 totalGanado += premioGanado;
@@ -101,8 +150,8 @@
             }
 
             // Actualizar los totales en la página
-            document.getElementById("totalGastado").textContent = totalGastado;
-            document.getElementById("totalGanado").textContent = totalGanado;
+            document.getElementById("totalGastado").textContent = totalGastado/1000000 + ' Millones';
+            document.getElementById("totalGanado").textContent = totalGanado/1000000 + ' Millones';
         });
     </script>
 </body>

@@ -1,2 +1,4 @@
-@use 'base';
+@use 'base'; //* Disponible solo en los archivos donde esta el @use
 @use 'layout';
+
+// @import 'base/variables'; //* Disponible en todos los archivos

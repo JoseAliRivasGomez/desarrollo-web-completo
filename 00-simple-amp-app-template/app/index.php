@@ -12,12 +12,13 @@ try {
         password: "myrootpassword",
     );
 
-    $persons = $pdo->query("SELECT * FROM Persons");
+    // $persons = $pdo->query("SELECT * FROM Persons");
 
+    echo '<p>Hola</p>';
     echo '<pre>';
-    foreach ($persons->fetchAll(PDO::FETCH_ASSOC) as $person) {
-        print_r($person);
-    }
+    // foreach ($persons->fetchAll(PDO::FETCH_ASSOC) as $person) {
+    //     print_r($person);
+    // }
     echo '</pre>';
 
 } catch (PDOException $e) {
