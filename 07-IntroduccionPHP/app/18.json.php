@@ -19,16 +19,20 @@ $productos = [
 ];
 
 echo "<pre>";
+
 var_dump($productos);
+echo "<br>";
 
 $json = json_encode($productos, JSON_UNESCAPED_UNICODE);
 
+var_dump($json);
+echo "<br>";
+
 $json_array = json_decode($json);
 
-var_dump($json);
 var_dump($json_array);
-echo "</pre>";
 
+echo "</pre>";
 
 
 

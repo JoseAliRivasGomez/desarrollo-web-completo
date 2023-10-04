@@ -13,8 +13,11 @@ echo "<pre>";
 var_dump($cliente['informacion']);
 echo "</pre>";
 
-// echo $cliente['nombre'];
-// echo $cliente['informacion']['disponible'];
+echo $cliente['nombre'];
+echo "<br>";
+
+echo $cliente['informacion']['disponible'];
+echo "<br>";
 
 $cliente['codigo'] = 1209192012;
 

@@ -5,7 +5,7 @@ docker-compose up
 
 ## See the results
 http://localhost:8088
-
+http://localhost:8088/01-hola-mundo.php
 
 
 

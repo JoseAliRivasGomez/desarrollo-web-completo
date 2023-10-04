@@ -23,10 +23,10 @@ echo "<br/>";
 var_dump($numero2 == $numero4);
 echo "<br/>";
 
-var_dump($numero2 === $numero4);
+var_dump($numero2 === $numero4); //* Mismo valor y tipo de dato
 echo "<br/>";
 
-// -1 Si Izquierda es menor, 0 Si es igual, 1 Si izquierda es mayor
+//* -1 Si Izquierda es menor, 0 Si es igual, 1 Si izquierda es mayor
 var_dump($numero1 <=> $numero2);
 echo "<br/>";
 

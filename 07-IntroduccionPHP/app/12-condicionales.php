@@ -9,7 +9,7 @@ if($autenticado && $admin ) {
     echo "Usuario no autenticado, inicia sesión";
 }
 
-// If anidados...
+//* If anidados...
 $cliente = [
     'nombre' => 'Juan',
     'saldo' => 0,
@@ -32,7 +32,7 @@ if( !empty($cliente) ) {
 
 echo "<br>";
 
-// else if
+//* else if
 if($cliente['saldo'] > 0 ) {
     echo "El Cliente tiene saldo";
 } else if ($cliente['informacion']['tipo'] === 'Premium') {
@@ -41,7 +41,7 @@ if($cliente['saldo'] > 0 ) {
     echo "No hay cliente definido o no tiene saldo o no es premium";
 }
 
-// Switch.
+//* Switch.
 
 echo "<br>";
 
