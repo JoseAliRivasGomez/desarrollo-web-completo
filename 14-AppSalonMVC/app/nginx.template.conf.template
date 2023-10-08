@@ -26,7 +26,11 @@ http {
         listen [::]:${PORT};
         server_name localhost;
 
-        root /;  # Replace with the actual path to your PHP application root
+        $if(NIXPACKS_PHP_ROOT_DIR) (
+            root ${NIXPACKS_PHP_ROOT_DIR};
+        ) else (
+            root /app;
+        )
      
         add_header X-Frame-Options "SAMEORIGIN";
         add_header X-Content-Type-Options "nosniff";
@@ -41,9 +45,11 @@ http {
             }
         ) else ()
         
-        location / {
-            try_files $uri $uri/ /index.php$is_args$args;
-        }
+        $if(NIXPACKS_PHP_FALLBACK_PATH) (
+          location / {
+            try_files $uri $uri/ ${NIXPACKS_PHP_FALLBACK_PATH}?$query_string;
+          }
+        ) else ()
      
         location = /favicon.ico { access_log off; log_not_found off; }
         location = /robots.txt  { access_log off; log_not_found off; }
