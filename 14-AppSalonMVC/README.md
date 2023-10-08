@@ -16,31 +16,62 @@ http://localhost:8089
 
 create table usuarios (
 	id int(11) not null auto_increment,
-    email varchar(50),
+    nombre varchar(60),
+    apellido varchar(60),
+    email varchar(40),
     password char(60),
+    telefono varchar(10),
+    admin tinyint(1),
+    confirmado tinyint(1),
+    token varchar(15),
     primary key (id)
     );
 
-
-create table propiedades (
+create table servicios (
 	id int(11) not null auto_increment,
-    titulo varchar(45),
-    precio decimal(10,2),
-    imagen varchar(200),
-    descripcion longtext,
-    habitaciones int(1),
-    wc int(1),
-    estacionamiento int(1),
-    creado date,
-    vendedor_id int(1),
-    primary key (id),
-    key vendedor_id (vendedor_id),
-    constraint vendedores_fk foreign key (vendedor_id) references vendedores (id)
+    nombre varchar(80),
+    precio decimal(6,2),
+    primary key (id)
     );
 
-Insertar usuario
+create table citas (
+	id int(11) not null auto_increment,
+    fecha date,
+    hora time,
+    usuarioId int(11),
+    primary key (id),
+    key usuarioId (usuarioId),
+    constraint usuarios_fk foreign key (usuarioId) references usuarios (id)
+    );
 
-insert into propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, vendedor_id, creado) values ("Casa Playa", 120000, "e51e3268e5ae18a874dc605f54af7ad9.jpg", "Casa Playa en Promocion", 1, 1, 1, 1, '2023-06-21');
+create table citasServicios (
+	id int(11) not null auto_increment,
+    citaId int(11),
+    servicioId int(11),
+    primary key (id),
+    key citaId (citaId),
+    constraint citas_fk foreign key (citaId) references citas (id),
+    key servicioId (servicioId),
+    constraint servicios_fk foreign key (servicioId) references servicios (id)
+    );
+
+INSERT INTO servicios ( nombre, precio ) VALUES
+    ('Corte de Cabello Mujer', 90),
+    ('Corte de Cabello Niño', 60),
+    ('Corte de Cabello Hombre', 80),
+    ('Corte de Barba', 60),
+    ('Peinado Mujer', 80),
+    ('Peinado Hombre', 60),
+    ('Peinado Niño', 60),
+    ('Tinte Mujer',300),
+    ('Uñas', 400),
+    ('Lavado de Cabello', 50),
+    ('Tratamiento Capilar', 150);
+
+INSERT INTO usuarios ( nombre, apellido, email, password, telefono, admin, confirmado ) VALUES
+    ('Jose', 'Rivas', 'jose@gmail.com', '$2y$10$S5k.qvrfXEZxQmvfBW5oZObTQSZfuZGxLbQCv/S2VQTuoBdmj5Y4G', '12345678', 1, 1);
+INSERT INTO usuarios ( nombre, apellido, email, password, telefono, admin, confirmado ) VALUES
+    ('Stefany', 'Camacho', 'stefany@gmail.com', '$2y$10$S5k.qvrfXEZxQmvfBW5oZObTQSZfuZGxLbQCv/S2VQTuoBdmj5Y4G', '12345678', 0, 1);
 
 
 
