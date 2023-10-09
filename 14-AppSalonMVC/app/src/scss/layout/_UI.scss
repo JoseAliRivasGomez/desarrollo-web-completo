@@ -22,8 +22,23 @@
         width: 95%;
         margin: 0 auto;
         padding: 3rem 0;
+        box-sizing: border-box;
+ 
         @include m.tablet {
             overflow: scroll;
+            overflow-x: hidden;
+            margin-right: 0;
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
+    
+            &::-webkit-scrollbar {
+                width: 0.9rem;
+            }
+    
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba(255,255,255, .4);
+                border-radius: 5px;
+            }
         }
     }
 }
