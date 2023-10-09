@@ -1,9 +1,17 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
+/* Agrega estas reglas para ocultar las barras de desplazamiento en Chrome */
 .formulario {
     margin-top: 5rem;
     width: 100%;
+    overflow-y: scroll; /* Muestra barras de desplazamiento solo cuando sea necesario */
+    scrollbar-width: none; /* Oculta las barras de desplazamiento por defecto de Chrome */
+    -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave en dispositivos táctiles */
+}
+
+.formulario::-webkit-scrollbar {
+    width: 0; /* Oculta las barras de desplazamiento personalizadas de Chrome */
 }
 
 .campo {
