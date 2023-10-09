@@ -9,7 +9,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - 8090:80
+      - 8092:80
     links:
       - 'php'
     volumes:
@@ -23,7 +23,7 @@ services:
     build: './build/mysql'
     environment:
       MYSQL_ROOT_PASSWORD: "myrootpassword"
-      MYSQL_DATABASE: "uptaskdb"
+      MYSQL_DATABASE: "mysqldb"
       MYSQL_USER: jose
       MYSQL_PASSWORD: 123456
     volumes:
