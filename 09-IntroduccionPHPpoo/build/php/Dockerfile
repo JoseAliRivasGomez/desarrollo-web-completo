@@ -2,7 +2,10 @@ FROM php:8.1-apache
 
 # Actualizar el índice de paquetes e instalar las extensiones PHP
 RUN apt-get update && \
-    docker-php-ext-install mysqli pdo pdo_mysql
+    apt-get install -y zip libzip-dev libpng-dev unzip git
+
+# Installing additional PHP modules
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Instalar Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

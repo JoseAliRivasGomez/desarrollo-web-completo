@@ -4,7 +4,7 @@
 docker-compose up
 
 ## See the results
-http://localhost:8090
+http://localhost:8092
 
 
 
@@ -16,62 +16,48 @@ http://localhost:8090
 
 create table usuarios (
 	id int(11) not null auto_increment,
-    nombre varchar(60),
-    apellido varchar(60),
-    email varchar(40),
-    password char(60),
-    telefono varchar(10),
-    admin tinyint(1),
+    nombre varchar(50),
+    email varchar(50),
+    password varchar(60),
     confirmado tinyint(1),
     token varchar(15),
     primary key (id)
     );
 
-create table servicios (
+create table proyectos (
 	id int(11) not null auto_increment,
-    nombre varchar(80),
-    precio decimal(6,2),
-    primary key (id)
-    );
-
-create table citas (
-	id int(11) not null auto_increment,
-    fecha date,
-    hora time,
-    usuarioId int(11),
+    proyecto varchar(60),
+    url varchar(32),
+    propietarioId int(11),
     primary key (id),
-    key usuarioId (usuarioId),
-    constraint usuarios_fk foreign key (usuarioId) references usuarios (id)
+    key propietarioId (propietarioId),
+    constraint usuarios_fk foreign key (propietarioId) references usuarios (id)
     );
 
-create table citasServicios (
+create table tareas (
 	id int(11) not null auto_increment,
-    citaId int(11),
-    servicioId int(11),
+    nombre varchar(60),
+    estado tinyint(1),
+    proyectoId int(11),
     primary key (id),
-    key citaId (citaId),
-    constraint citas_fk foreign key (citaId) references citas (id),
-    key servicioId (servicioId),
-    constraint servicios_fk foreign key (servicioId) references servicios (id)
+    key proyectoId (proyectoId),
+    constraint proyectos_fk foreign key (proyectoId) references proyectos (id)
     );
 
-INSERT INTO servicios ( nombre, precio ) VALUES
-    ('Corte de Cabello Mujer', 90),
-    ('Corte de Cabello Niño', 60),
-    ('Corte de Cabello Hombre', 80),
-    ('Corte de Barba', 60),
-    ('Peinado Mujer', 80),
-    ('Peinado Hombre', 60),
-    ('Peinado Niño', 60),
-    ('Tinte Mujer',300),
-    ('Uñas', 400),
-    ('Lavado de Cabello', 50),
-    ('Tratamiento Capilar', 150);
+INSERT INTO usuarios ( nombre, email, password, confirmado ) VALUES
+    ('Jose Rivas', 'jose@gmail.com', '$2y$10$S5k.qvrfXEZxQmvfBW5oZObTQSZfuZGxLbQCv/S2VQTuoBdmj5Y4G', 1);
 
-INSERT INTO usuarios ( nombre, apellido, email, password, telefono, admin, confirmado ) VALUES
-    ('Jose', 'Rivas', 'jose@gmail.com', '$2y$10$S5k.qvrfXEZxQmvfBW5oZObTQSZfuZGxLbQCv/S2VQTuoBdmj5Y4G', '12345678', 1, 1);
-INSERT INTO usuarios ( nombre, apellido, email, password, telefono, admin, confirmado ) VALUES
-    ('Stefany', 'Camacho', 'stefany@gmail.com', '$2y$10$S5k.qvrfXEZxQmvfBW5oZObTQSZfuZGxLbQCv/S2VQTuoBdmj5Y4G', '12345678', 0, 1);
+INSERT INTO proyectos ( proyecto, url, propietarioId ) VALUES
+    ('Proyecto 1', '1', 1),
+    ('Proyecto 2', '2', 1);
+
+INSERT INTO tareas ( nombre, estado, proyectoId ) VALUES
+    ('Tarea 1', 0, 1),
+    ('Tarea 2', 1, 1),
+    ('Tarea 3', 0, 2),
+    ('Tarea 4', 1, 2);
+
+
 
 
 
